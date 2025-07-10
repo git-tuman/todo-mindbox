@@ -1,15 +1,14 @@
 import { useContext } from "react";
-import { ACTION_TYPES, FILTERS, TEXT_NO_TASKS } from "../constants";
-import { Button, Divider, Flex, Space, Typography } from "antd";
-import { BorderOutlined, CheckSquareOutlined } from "@ant-design/icons";
-import { StoreContext, StoreDispatch } from "../store/StoreContext";
+import { FILTERS, TEXT_NO_TASKS } from "../constants";
+import { Divider, Space, Typography } from "antd";
+import { StoreContext } from "../store/StoreContext";
 import { Task } from "../store/types";
+import TaskItem from "./TaskItem";
 
 const { Text } = Typography;
 
 function TaskList() {
     const store = useContext(StoreContext);
-    const dispatch = useContext(StoreDispatch);
 
     if (store?.tasks.length === 0) {
         return (
@@ -21,10 +20,6 @@ function TaskList() {
                 <Divider className="divider" />
             </>
         );
-    }
-
-    function handleToggleTask(id: number) {
-        dispatch?.({ type: ACTION_TYPES.TOGGLE_TASK, payload: id });
     }
 
     function filterTasks() {
@@ -40,51 +35,13 @@ function TaskList() {
 
     const list: Task[] | undefined = filterTasks();
 
-    return (
+    return list?.map((task: Task) => (
         <>
-            {list &&
-                list.map((task: Task) => (
-                    <Space key={task.id} className="task-container">
-                        <Flex
-                            key={task.id}
-                            align="center"
-                            gap="small"
-                            className="task"
-                        >
-                            <Button
-                                color="default"
-                                variant="text"
-                                className={
-                                    task.completed
-                                        ? "btn-icon completed-btn"
-                                        : "btn-icon"
-                                }
-                                icon={
-                                    task.completed ? (
-                                        <CheckSquareOutlined />
-                                    ) : (
-                                        <BorderOutlined />
-                                    )
-                                }
-                                onClick={() => handleToggleTask(task.id)}
-                            />
+            <TaskItem task={task} />
 
-                            <Text
-                                className={
-                                    task.completed
-                                        ? "task-text completed raleway-text"
-                                        : "task-text raleway-text"
-                                }
-                            >
-                                {task.value}
-                            </Text>
-                        </Flex>
-
-                        <Divider className="divider" />
-                    </Space>
-                ))}
+            <Divider className="divider" />
         </>
-    );
+    ));
 }
 
 export default TaskList;

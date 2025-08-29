@@ -16,6 +16,7 @@
 - React
 - Ant Design
 - Vite
+- Vitest + React Testing Library
 
 ---
 

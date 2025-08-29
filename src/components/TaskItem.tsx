@@ -1,17 +1,17 @@
-import { memo, useContext } from "react";
-import { StoreDispatch } from "../store/StoreContext";
+import { memo } from "react";
 import { Task } from "../shared/types";
 import { Button, Flex, Space, Typography } from "antd";
 import { BorderOutlined, CheckSquareOutlined } from "@ant-design/icons";
-import { ACTION_TYPES } from "../shared/constants";
+import { useDispatch } from "react-redux";
+import { toggleTask } from "../store/todosSlice";
 
 const { Text } = Typography;
 
 const TaskItem = memo(({ task }: { task: Task }) => {
-  const dispatch = useContext(StoreDispatch);
+  const dispatch = useDispatch();
 
   function handleToggleTask(id: number) {
-    dispatch?.({ type: ACTION_TYPES.TOGGLE_TASK, payload: id });
+    dispatch(toggleTask(id));
   }
 
   return (
@@ -31,6 +31,7 @@ const TaskItem = memo(({ task }: { task: Task }) => {
               ? "task-text completed raleway-text"
               : "task-text raleway-text"
           }
+          data-testid="task"
         >
           {task.value}
         </Text>

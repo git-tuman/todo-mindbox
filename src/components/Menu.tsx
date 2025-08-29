@@ -1,21 +1,22 @@
-import { useContext } from "react";
 import { Store } from "antd/es/form/interface";
-import { ACTION_TYPES, CLEAR_COMPLETED, FILTERS } from "../shared/constants";
+import { CLEAR_COMPLETED, FILTERS } from "../shared/constants";
 import { Flex } from "antd";
 import CountItems from "./CountItems";
 import BtnMenu from "./BtnMenu";
-import { StoreContext, StoreDispatch } from "../store/StoreContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
+import { changeFilter, clearCompleted } from "../store/todosSlice";
 
 function Menu() {
-  const store = useContext(StoreContext);
-  const dispatch = useContext(StoreDispatch);
+  const store = useSelector((state: RootState) => state.todos);
+  const dispatch = useDispatch();
 
   const handleChangeFilter = (name: Store["filter"]) => {
-    dispatch?.({ type: ACTION_TYPES.CHANGE_FILTER, payload: name });
+    dispatch(changeFilter(name));
   };
 
   const handleClearCompleted = () => {
-    dispatch?.({ type: ACTION_TYPES.CLEAR_COMPLETED });
+    dispatch(clearCompleted());
   };
 
   return (

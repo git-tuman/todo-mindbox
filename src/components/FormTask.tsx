@@ -1,20 +1,17 @@
 import { Button, Divider, Flex, Form, Input } from "antd";
-import { useContext } from "react";
-import { ACTION_TYPES, ERORS, INPUT_PLACEHOLDER } from "../shared/constants";
+import { addTask } from "../store/todosSlice";
+import { ERORS, INPUT_PLACEHOLDER } from "../shared/constants";
 import { PlusOutlined } from "@ant-design/icons";
-import { StoreDispatch } from "../store/StoreContext";
+import { useDispatch } from "react-redux";
 
 function FormTask() {
   const [form] = Form.useForm();
-  const dispatch = useContext(StoreDispatch);
+  const dispatch = useDispatch();
   const formName = "formTask";
 
   const handleSubmit = () => {
-    dispatch?.({
-      type: ACTION_TYPES.ADD_TASK,
-      payload: form.getFieldValue(formName),
-    });
-
+    const value = form.getFieldValue("formTask");
+    dispatch(addTask(value));
     form.resetFields();
   };
 

@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
-import { initialList } from "./store/initialData";
 import { CLEAR_COMPLETED, ERORS, INPUT_PLACEHOLDER } from "./shared/constants";
+import { toDosList } from "./store/todosSlice";
 
 function setup() {
   return render(<App />);
@@ -11,9 +11,25 @@ function setup() {
 describe("App UI", () => {
   it("показывает стартовые задачи", () => {
     setup();
-    initialList.map((item) =>
+    toDosList.map((item) =>
       expect(screen.getByText(item.value)).toBeInTheDocument()
     );
+  });
+
+  it("фильтрует задачи по статусу", async () => {
+    setup();
+    console.log(screen.debug());
+    await userEvent.click(screen.getByTestId("filter-active"));
+    let tasks = screen.queryAllByTestId("task");
+    expect(tasks).toHaveLength(toDosList.filter((t) => !t.completed).length);
+
+    await userEvent.click(screen.getByTestId("filter-completed"));
+    tasks = screen.queryAllByTestId("task");
+    expect(tasks).toHaveLength(toDosList.filter((t) => t.completed).length);
+
+    await userEvent.click(screen.getByTestId("filter-all"));
+    tasks = screen.queryAllByTestId("task");
+    expect(tasks).toHaveLength(toDosList.length);
   });
 
   it("выдаёт ошибку если меньше 5 символов", async () => {
@@ -35,7 +51,7 @@ describe("App UI", () => {
 
   it("переключает задачу в completed", async () => {
     setup();
-    const task = screen.getByText(initialList[0].value);
+    const task = screen.getByText(toDosList[0].value);
     const toggleBtn = task.closest(".task")!.querySelector("button")!;
     await userEvent.click(toggleBtn);
     expect(toggleBtn.className).toMatch(/completed-btn/);
@@ -47,28 +63,6 @@ describe("App UI", () => {
       name: CLEAR_COMPLETED,
     });
     await userEvent.click(clearBtn);
-    expect(screen.queryByText(initialList[1].value)).not.toBeInTheDocument();
-  });
-
-  it("фильтрует задачи по статусу", async () => {
-    setup();
-    await userEvent.click(screen.getByTestId("filter-active"));
-    initialList.map((item) =>
-      item.completed
-        ? expect(screen.queryByText(item.value)).not.toBeInTheDocument()
-        : expect(screen.getByText(item.value)).toBeInTheDocument()
-    );
-
-    await userEvent.click(screen.getByTestId("filter-completed"));
-    initialList.map((item) =>
-      item.completed
-        ? expect(screen.getByText(item.value)).toBeInTheDocument()
-        : expect(screen.queryByText(item.value)).not.toBeInTheDocument()
-    );
-
-    await userEvent.click(screen.getByTestId("filter-all"));
-    initialList.map((item) =>
-      expect(screen.getByText(item.value)).toBeInTheDocument()
-    );
+    expect(screen.queryByText(toDosList[1].value)).not.toBeInTheDocument();
   });
 });

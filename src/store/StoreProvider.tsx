@@ -1,20 +1,20 @@
-import { useReducer } from "react";
-import { reducer } from "./reducer";
-import { initialStore } from "./initialData";
-import { StoreContext, StoreDispatch } from "./StoreContext";
+// import { useReducer } from "react";
+// import { reducer } from "./reducer";
+// import { StoreContext, StoreDispatch } from "./StoreContext";
+// import { initialState } from "./todosSlice";
 
-export default function StoreProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [store, dispatch] = useReducer(reducer, initialStore);
+// export default function StoreProvider({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   const [store, dispatch] = useReducer(reducer, initialState);
 
-  return (
-    <StoreContext.Provider value={store}>
-      <StoreDispatch.Provider value={dispatch}>
-        {children}
-      </StoreDispatch.Provider>
-    </StoreContext.Provider>
-  );
-}
+//   return (
+//     <StoreContext.Provider value={store}>
+//       <StoreDispatch.Provider value={dispatch}>
+//         {children}
+//       </StoreDispatch.Provider>
+//     </StoreContext.Provider>
+//   );
+// }

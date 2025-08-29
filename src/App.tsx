@@ -3,12 +3,13 @@ import TaskList from "./components/TaskList";
 import Menu from "./components/Menu";
 import { Flex, Space } from "antd";
 import Title from "antd/es/typography/Title";
-import StoreProvider from "./store/StoreProvider";
 import { TODOS } from "./shared/constants";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
   return (
-    <StoreProvider>
+    <Provider store={store}>
       <Flex justify="center" align="center" className="wrapper">
         <Space direction="vertical" className="container">
           <Title level={1} className="header raleway-header">
@@ -24,7 +25,7 @@ function App() {
           </Space>
         </Space>
       </Flex>
-    </StoreProvider>
+    </Provider>
   );
 }
 

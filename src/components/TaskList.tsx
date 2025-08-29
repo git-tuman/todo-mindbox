@@ -1,14 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Divider, Space, Typography } from "antd";
-import { StoreContext } from "../store/StoreContext";
 import { Task } from "../shared/types";
 import TaskItem from "./TaskItem";
 import { FILTERS, TEXT_NO_TASKS } from "../shared/constants";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const { Text } = Typography;
 
 function TaskList() {
-  const store = useContext(StoreContext);
+  const store = useSelector((state: RootState) => state.todos);
 
   if (store?.tasks.length === 0) {
     return (

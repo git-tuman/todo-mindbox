@@ -6,7 +6,7 @@ export interface Task {
   completed: boolean;
 }
 
-export interface Store {
+export interface TodosState {
   filter: string;
   tasks: Task[];
 }
@@ -15,4 +15,4 @@ export type Action =
   | { type: typeof ACTION_TYPES.ADD_TASK; payload: string }
   | { type: typeof ACTION_TYPES.TOGGLE_TASK; payload: number }
   | { type: typeof ACTION_TYPES.CLEAR_COMPLETED }
-  | { type: typeof ACTION_TYPES.CHANGE_FILTER; payload: Store["filter"] };
+  | { type: typeof ACTION_TYPES.CHANGE_FILTER; payload: TodosState["filter"] };

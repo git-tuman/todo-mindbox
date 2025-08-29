@@ -1,7 +1,7 @@
-import { createContext, Dispatch } from "react";
-import { Action, Store } from "../shared/types";
+// import { createContext, Dispatch } from "react";
+// import { Action, TodosState } from "../shared/types";
 
-export const StoreContext = createContext<Store | undefined>(undefined);
-export const StoreDispatch = createContext<Dispatch<Action> | undefined>(
-  undefined
-);
+// export const StoreContext = createContext<TodosState | undefined>(undefined);
+// export const StoreDispatch = createContext<Dispatch<Action> | undefined>(
+//   undefined
+// );

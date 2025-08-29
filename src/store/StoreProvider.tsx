@@ -4,17 +4,17 @@ import { initialStore } from "./initialData";
 import { StoreContext, StoreDispatch } from "./StoreContext";
 
 export default function StoreProvider({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    const [store, dispatch] = useReducer(reducer, initialStore);
+  const [store, dispatch] = useReducer(reducer, initialStore);
 
-    return (
-        <StoreContext.Provider value={store}>
-            <StoreDispatch.Provider value={dispatch}>
-                {children}
-            </StoreDispatch.Provider>
-        </StoreContext.Provider>
-    );
+  return (
+    <StoreContext.Provider value={store}>
+      <StoreDispatch.Provider value={dispatch}>
+        {children}
+      </StoreDispatch.Provider>
+    </StoreContext.Provider>
+  );
 }

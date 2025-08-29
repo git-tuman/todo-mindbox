@@ -1,128 +1,128 @@
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
 }
 
 #root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
 }
 
 .raleway-header {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
 }
 
 .raleway-input {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: italic;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: italic;
 }
 
 .raleway-text {
-    font-family: "Raleway", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
 
 .wrapper {
-    height: 100vh;
+  height: 100vh;
 }
 
 .container {
-    background-color: rgb(240, 240, 240);
-    width: 50%;
-    padding: 10px;
+  background-color: rgb(240, 240, 240);
+  width: 50%;
+  padding: 10px;
 }
 
 .ant-typography.header {
-    color: gray;
-    margin: 0;
-    font-size: 64px;
+  color: gray;
+  margin: 0;
+  font-size: 64px;
 }
 
 .app {
-    width: 100%;
-    background-color: white;
-    gap: 0;
+  width: 100%;
+  background-color: white;
+  gap: 0;
 }
 
 .form-container {
-    padding: 10px;
+  padding: 10px;
 }
 
 .btn-icon {
-    font-size: 20px;
-    color: rgb(191, 191, 191);
+  font-size: 20px;
+  color: rgb(191, 191, 191);
 }
 
 .form-input-container {
-    margin-bottom: 0;
-    width: 100%;
+  margin-bottom: 0;
+  width: 100%;
 }
 
 .form-input {
-    padding: 0;
-    width: 100%;
-    border-radius: 0;
-    font-size: 20px;
-    color: gray;
+  padding: 0;
+  width: 100%;
+  border-radius: 0;
+  font-size: 20px;
+  color: gray;
 }
 
 .divider {
-    margin: 0;
+  margin: 0;
 }
 
 .text-no-tasks {
-    font-size: 20px;
-    color: gray;
+  font-size: 20px;
+  color: gray;
 }
 
 .task-container {
-    display: grid;
+  display: grid;
 }
 
 .task {
-    padding: 10px;
+  padding: 10px;
 }
 
 .task-text {
-    font-size: 20px;
-    color: gray;
+  font-size: 20px;
+  color: gray;
 }
 
 .completed {
-    color: rgb(191, 191, 191);
-    text-decoration: line-through;
+  color: rgb(191, 191, 191);
+  text-decoration: line-through;
 }
 
 .completed-btn {
-    color: gray;
+  color: gray;
 }
 
 .menu-container {
-    padding: 10px;
+  padding: 10px;
 }
 
 .text-count-items {
-    color: gray;
-    padding-top: 1px;
-    padding-left: 8px;
-    padding-right: 8px;
+  color: gray;
+  padding-top: 1px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .filter-btn {
-    color: gray;
+  color: gray;
 }
 
 .active {
-    border: 1px solid gray;
+  border: 1px solid gray;
 }
